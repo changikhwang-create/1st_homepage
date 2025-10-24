@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AIoT: 미래를 연결하는 지능 | 투자 제안</title>
+    <style>
+        /* --- Basic Reset & Fonts --- */
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700;900&display=swap');
+        
+        :root {
+            --primary-color: #00aaff;
+            --background-color: #0f172a;
+            --text-color: #e2e8f0;
+            --secondary-text-color: #94a3b8;
+            --card-background: #1e293b;
+            --highlight-color: #38bdf8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* --- Global Styles --- */
+        .container {
+            width: 100%;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 100px 20px;
+            text-align: center;
+        }
+        
+        h1, h2, h3 {
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 20px;
+        }
+
+        h1 { font-size: 3.5rem; line-height: 1.2; }
+        h2 { font-size: 2.5rem; }
+        p { font-size: 1.1rem; color: var(--secondary-text-color); max-width: 700px; margin: 0 auto 20px auto; }
+        
+        .section-headline {
+            font-size: 1rem;
+            color: var(--highlight-color);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        /* --- Navigation --- */
+        nav {
+            position: fixed;
+            width: 100%;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background-color: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(10px);
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        nav a {
+            color: var(--text-color);
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: 400;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--primary-color);
+        }
+        
+        /* --- Hero Section --- */
+        .hero {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+            background: linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 1)), url('https://images.unsplash.com/photo-1581092921462-20521a3a9fe3?q=80&w=2070&auto=format&fit=crop') no-repeat center center/cover;
+            padding: 0 20px;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 40px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 15px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            margin: 0 10px;
+        }
+
+        .cta-primary {
+            background-color: var(--primary-color);
+            color: #fff;
+        }
+
+        .cta-primary:hover {
+            background-color: var(--highlight-color);
+            transform: translateY(-3px);
+        }
+
+        .cta-secondary {
+            background-color: transparent;
+            color: #fff;
+            border: 2px solid var(--primary-color);
+        }
+
+        .cta-secondary:hover {
+            background-color: var(--primary-color);
+            color: #fff;
+            transform: translateY(-3px);
+        }
+        
+        /* --- Content Sections --- */
+        .section {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .grid-card {
+            background-color: var(--card-background);
+            padding: 40px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .grid-card h3 {
+            font-size: 4rem;
+            color: var(--primary-color);
+        }
+        
+        .grid-card p {
+            font-size: 1rem;
+            color: var(--text-color);
+        }
+        
+        /* --- Competition Table --- */
+        .competition-table {
+            width: 100%;
+            margin-top: 50px;
+            border-collapse: collapse;
+            text-align: left;
+        }
+
+        .competition-table th, .competition-table td {
+            padding: 20px;
+            border-bottom: 1px solid var(--card-background);
+        }
+
+        .competition-table th {
+            color: var(--secondary-text-color);
+            font-size: 0.9rem;
+        }
+        
+        .competition-table td {
+            font-size: 1.1rem;
+            font-weight: bold;
+        }
+        
+        .our-solution {
+            color: var(--highlight-color);
+        }
+
+        /* --- Team Section --- */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .team-member {
+            background-color: var(--card-background);
+            padding: 30px;
+            border-radius: 10px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .team-member:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .team-member img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .team-member h3 {
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+        }
+        
+        .team-member p {
+            font-size: 1rem;
+            color: var(--highlight-color);
+        }
+        
+        /* --- Partners Section --- */
+        .partners {
+            margin-top: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 50px;
+            filter: grayscale(1) brightness(1.5);
+        }
+        
+        .partners img {
+            height: 40px;
+        }
+
+        /* --- CTA Section --- */
+        .cta-section {
+            background-color: var(--card-background);
+            border-radius: 20px;
+        }
+        
+        .cta-form {
+            margin-top: 40px;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .cta-form input {
+            padding: 15px 25px;
+            border-radius: 50px;
+            border: 1px solid var(--secondary-text-color);
+            background: var(--background-color);
+            color: var(--text-color);
+            font-size: 1rem;
+            width: 300px;
+        }
+
+        .cta-form button {
+            padding: 15px 35px;
+            border-radius: 50px;
+            background-color: var(--primary-color);
+            color: #fff;
+            border: none;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        .cta-form button:hover {
+            background-color: var(--highlight-color);
+        }
+        
+        /* --- Footer --- */
+        footer {
+            text-align: center;
+            padding: 50px 20px;
+            color: var(--secondary-text-color);
+            border-top: 1px solid var(--card-background);
+        }
+        
+        footer p {
+            font-size: 0.9rem;
+        }
+
+        /* --- Responsive --- */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            h2 { font-size: 2rem; }
+            nav { display: none; } /* Mobile nav would require more JS */
+            .grid-3 { grid-template-columns: 1fr; }
+            .competition-table { font-size: 0.8rem; }
+            .competition-table th, .competition-table td { padding: 10px; }
+            .cta-form { flex-direction: column; align-items: center; }
+            .cta-form input { width: 100%; }
+        }
+
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="#home" class="logo">AIoT</a>
+        <div>
+            <a href="#problem">The Problem</a>
+            <a href="#solution">The Solution</a>
+            <a href="#technology">Technology</a>
+            <a href="#market">Market</a>
+            <a href="#team">Team</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+
+    <header class="hero" id="home">
+        <h1>데이터가 스스로 가치를 만드는 시대,<br>AIoT 기술로 시장을 선도합니다.</h1>
+        <p>미래를 예측하는 IoT, AI가 만들어가는 새로운 비즈니스 생태계</p>
+        <div>
+            <a href="#contact" class="cta-button cta-primary">투자 제안서 다운로드</a>
+            <a href="#" class="cta-button cta-secondary">데모 영상 보기</a>
+        </div>
+    </header>
+
+    <main>
+        <section id="problem" class="container section">
+            <div class="section-headline">The Problem</div>
+            <h2>"연결"만으로는 충분하지 않습니다.</h2>
+            <p>기존 IoT는 데이터를 수집할 뿐, 스스로 학습하고 예측하지 못합니다. 데이터 분석을 위한 높은 비용과 전문 인력의 부재는 시장 성장의 명확한 한계입니다.</p>
+            <div class="grid-3">
+                <div class="grid-card">
+                    <h3>90%</h3>
+                    <p>매년 수집되는 데이터 중 활용되지 못하고 사라지는 비율</p>
+                </div>
+                <div class="grid-card">
+                    <h3>45%</h3>
+                    <p>데이터 분석 프로젝트가 비용 문제로 중단되는 비율</p>
+                </div>
+                <div class="grid-card">
+                    <h3>NO</h3>
+                    <p>스스로 학습하고 예측하는 진정한 의미의 지능 부재</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="solution" class="container section">
+            <div class="section-headline">The Solution</div>
+            <h2>스스로 학습하고 예측하며, 최적의 의사결정을 내립니다.</h2>
+            <p>저희 AIoT 솔루션은 단순한 데이터 수집을 넘어, 실시간으로 데이터를 분석하고 미래를 예측합니다. 이를 통해 운영 효율을 극대화하고 새로운 비즈니스 기회를 창출하여 고객의 성공을 이끌어냅니다.</p>
+            <!-- A placeholder for a 3D product render or an animation -->
+            <img src="https://placehold.co/800x450/1e293b/38bdf8?text=Product+Demo" alt="Product Demo" style="max-width:100%; border-radius: 10px; margin-top: 30px;">
+        </section>
+
+        <section id="technology" class="container section">
+            <div class="section-headline">Product Competitiveness</div>
+            <h2>왜 우리가 다른가?</h2>
+            <p>자체 개발한 AI 엔진과 100% 호환성, 그리고 블록체인 기반의 강력한 보안까지. 우리는 시장이 필요로 하는 모든 것을 갖추었습니다.</p>
+            <table class="competition-table">
+                <thead>
+                    <tr>
+                        <th>주요 기능</th>
+                        <th>자사 솔루션</th>
+                        <th>경쟁사 A</th>
+                        <th>경쟁사 B</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>AI 예측 분석</td>
+                        <td class="our-solution">정확도 99.8% (자체 개발 엔진)</td>
+                        <td>92% (오픈소스 기반)</td>
+                        <td>88% (클라우드 API)</td>
+                    </tr>
+                    <tr>
+                        <td>데이터 처리</td>
+                        <td class="our-solution">실시간 엣지 컴퓨팅</td>
+                        <td>클라우드 전송 후 처리</td>
+                        <td>클라우드 전송 후 처리</td>
+                    </tr>
+                    <tr>
+                        <td>시스템 호환성</td>
+                        <td class="our-solution">100% 호환 (Plug & Play)</td>
+                        <td>제한적 호환</td>
+                        <td>별도 시스템 구축 필요</td>
+                    </tr>
+                    <tr>
+                        <td>데이터 보안</td>
+                        <td class="our-solution">블록체인 기반 암호화</td>
+                        <td>서버 자체 보안</td>
+                        <td>서버 자체 보안</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="market" class="container section">
+            <div class="section-headline">Market Opportunity</div>
+            <h2>2030년 1,000조원, 거대 시장의 문이 열립니다.</h2>
+            <p>전 세계 AIoT 시장은 연평균 38%씩 폭발적으로 성장하고 있습니다. 저희는 핵심 타겟 산업군을 시작으로, 관련 시장까지 선점하여 시장의 표준이 될 것입니다.</p>
+             <!-- A placeholder for market growth graph -->
+            <img src="https://placehold.co/800x400/1e293b/38bdf8?text=Market+Growth+Graph" alt="Market Growth Graph" style="max-width:100%; border-radius: 10px; margin-top: 30px;">
+        </section>
+        
+        <section id="team" class="container section">
+            <div class="section-headline">The Team</div>
+            <h2>아이디어를 현실로 만드는 실행력을 갖춘 팀</h2>
+            <p>우리는 아이디어만 있는 팀이 아닙니다. 핵심 기술 분야에서 평균 15년 이상의 경력을 가진 전문가들이며, 성공적인 엑싯(Exit) 경험을 통해 증명된 팀입니다.</p>
+            <div class="team-grid">
+                <div class="team-member">
+                    <img src="https://placehold.co/120x120/e2e8f0/1e293b?text=CEO" alt="CEO">
+                    <h3>김철수</h3>
+                    <p>CEO | 前 OOO사 AI 연구소장</p>
+                </div>
+                <div class="team-member">
+                    <img src="https://placehold.co/120x120/e2e8f0/1e293b?text=CTO" alt="CTO">
+                    <h3>박영희</h3>
+                    <p>CTO | 前 OOO사 IoT 플랫폼 개발 총괄</p>
+                </div>
+                <div class="team-member">
+                    <img src="https://placehold.co/120x120/e2e8f0/1e293b?text=CSO" alt="CSO">
+                    <h3>이민준</h3>
+                    <p>CSO | 前 OOO 컨설팅 전략 파트너</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="traction" class="container section">
+            <div class="section-headline">Traction & Proof</div>
+             <h2>우리의 가능성은 이미 시장에서 증명되고 있습니다.</h2>
+             <div class="grid-3">
+                <div class="grid-card">
+                    <h3>30%</h3>
+                    <p>생산성 향상 (베타 테스트 결과)</p>
+                </div>
+                <div class="grid-card">
+                    <h3>5개</h3>
+                    <p>글로벌 기업과 PoC(기술검증) 진행</p>
+                </div>
+                <div class="grid-card">
+                    <h3>2건</h3>
+                    <p>핵심 기술 특허 출원 완료</p>
+                </div>
+            </div>
+             <div class="partners">
+                 <!-- Replace with actual partner logos -->
+                 <img src="https://placehold.co/150x40/ffffff/94a3b8?text=Partner+A" alt="Partner A">
+                 <img src="https://placehold.co/150x40/ffffff/94a3b8?text=Partner+B" alt="Partner B">
+                 <img src="https://placehold.co/150x40/ffffff/94a3b8?text=Partner+C" alt="Partner C">
+             </div>
+        </section>
+
+        <section id="contact" class="container section cta-section">
+            <div class="section-headline">Investor Relations</div>
+            <h2>미래에 투자하십시오.</h2>
+            <p>저희의 비전과 기술력, 그리고 상세한 사업 계획은 투자 제안서에 담겨있습니다. 지금 바로 다운로드하여 확인하시고, 저희와 함께 시장을 혁신할 기회를 잡으십시오.</p>
+            <form class="cta-form" onsubmit="return false;">
+                <input type="email" placeholder="이메일 주소를 입력하세요">
+                <button type="submit">투자 제안서 받기</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 AIoT Solutions Inc. All rights reserved.</p>
+        <p>투자 관련 문의: ir@yourcompany.com | 서울특별시 강남구 테헤란로 123, 45층</p>
+    </footer>
+    
+    <script>
+        // Simple scroll animation
+        const sections = document.querySelectorAll('.section');
+
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
